@@ -1,0 +1,24 @@
+<ion-view title="Start">
+    <!-- Add a header button -->
+    <ion-nav-buttons side="primary">
+        <button class="button button-icon icon ion-earth" ui-sref="app.challenges">
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="list">
+            <div class="item item-divider">Items in collections {{ getCollection().length }}</div>
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Filter items..." ng-model="filterInput">
+                </label>
+            </div>
+            <div ng-repeat="item in collection | filter:filterInput" class="list card">
+                <div class="item">
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.description }}</p>
+                    <button class="button button-small button-assertive" ng-click="removeItem(item)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
