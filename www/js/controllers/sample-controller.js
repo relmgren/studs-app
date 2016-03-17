@@ -9,13 +9,30 @@ controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Sch
 		$scope.collection = Schedule.all();
 	};
 
-	$scope.removeItem = function(item) {
-		SampleService.remove(item);
+	$scope.remoteSchedule = function() {
+		var results = Schedule.resource.query({}, function() {
+			angular.forEach(results, function(item) {
+				$scope.collection.push(item);
+			})
+			console.log(results);
+		}, function(err){
+			console.log("NU GICK DET FEL!");
+			console.log(err);
+		});
+	};
+
+	$scope.getItem = function(item) {
+		var results = Schedule.resource.get({id:item._id.$oid}, function() {
+			console.log(results);
+		}, function(err) {
+			console.log(err);
+		});
 	};
 
 	$scope.init = function() {
 		// Run initial code here!
 		$scope.getCollection();
+		$scope.remoteSchedule();
 	};
 
 	$scope.init();
