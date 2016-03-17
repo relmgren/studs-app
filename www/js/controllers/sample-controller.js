@@ -1,19 +1,12 @@
 /*
 *	Sample controller
 */
-controllers.controller('sampleCtrl', ['$scope', 'SampleService', function($scope, SampleService) {
+controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Schedule) {
 	$scope.variable = "Variable!";
 	$scope.collection = [];
 
 	$scope.getCollection = function() {
-		$scope.collection = SampleService.all();
-	};
-
-	$scope.addItem = function() {
-		SampleService.add({
-			title: "Title " + (SampleService.all().length + 1),
-			description: "Added a new one!"
-		});
+		$scope.collection = Schedule.all();
 	};
 
 	$scope.removeItem = function(item) {

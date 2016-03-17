@@ -4,7 +4,7 @@
 // 'app' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('app', ['ionic', 'ngCordova', 'app.config', 'app.controllers', 'app.services', 'app.directives'])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,9 +19,20 @@ var app = angular.module('app', ['ionic', 'ngCordova', 'app.config', 'app.contro
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    if (window.Connection) {
+        if (navigator.connection.type == Connection.NONE) {
+            $ionicPopup.confirm({
+                title: "Internet is not working",
+                content: "Internet is not working on your device."
+            });
+        }
+    }
   });
+
+
 });
 
 var controllers = angular.module('app.controllers', []);
-var services = angular.module('app.services', []);
+var services = angular.module('app.services', ['ngResource']);
 var directives = angular.module('app.directives', []);

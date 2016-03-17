@@ -41,7 +41,7 @@ Run the command
 
 ## Clone the repo
 After cloning the repo run
-    `npm install`
+    `npm install` , 
     `bower install`
 
 
