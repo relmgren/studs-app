@@ -9,6 +9,11 @@ https://github.com/creationix/nvm
 
 Follow the instructions of the NVM to install a Node version that is supported.
 
+
+## Ionic
+    `npm install -g cordova ionic`  
+
+
 ## Bower
 Install Bower after you have installed Node, this gives you the Node Package Manager (npm).
 In your console, enter:
