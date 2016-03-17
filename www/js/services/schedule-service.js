@@ -35,6 +35,9 @@ services.factory('Schedule', function($resource) {
             localStorage.setItem("schedule", JSON.stringify(schedule));
 
         },
+        index: function(index) {
+            return schedule[index];
+        },
         remove: function(item) {
             var index = schedule.indexOf(item);
             if(index > -1) {

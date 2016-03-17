@@ -14,7 +14,6 @@ controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Sch
 			angular.forEach(results, function(item) {
 				$scope.collection.push(item);
 			})
-			console.log(results);
 		}, function(err){
 			console.log("NU GICK DET FEL!");
 			console.log(err);
@@ -23,7 +22,6 @@ controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Sch
 
 	$scope.getItem = function(item) {
 		var results = Schedule.resource.get({id:item._id.$oid}, function() {
-			console.log(results);
 		}, function(err) {
 			console.log(err);
 		});

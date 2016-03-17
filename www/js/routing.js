@@ -17,6 +17,20 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     }
   })
+  .state('app.scheduledEvent', {
+        url: "/schedule/:scheduledEvent",
+        views: {
+            'appContent' :{
+                templateUrl: 'views/scheduledEvent.html',
+                controller : "scheduledEventCtrl"
+            }
+        },
+        resolve: {
+            happening: function($stateParams, Schedule) {
+              return Schedule.index($stateParams.scheduledEvent)
+            }
+        }
+    })
   .state('app.challenges', {
     url: 'challenges',
     views: {

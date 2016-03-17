@@ -16,7 +16,7 @@
                 <div class="item">
                     <h2>{{ item.title }}</h2>
                     <p>{{ item.description }}</p>
-                    <button class="button button-small button-positive" ng-click="getItem(item)">More Info</button>
+                    <button class="button button-small button-positive" ui-sref="app.scheduledEvent({scheduledEvent: $index})">More Info</button>
                 </div>
             </div>
         </div>
