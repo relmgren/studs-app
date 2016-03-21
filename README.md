@@ -32,11 +32,11 @@ For Windows the simplest way to install Ruby is by using their installer
     `http://rubyinstaller.org/`
 
 For Linux run the command
-    `sudo su -c "gem install sass"`
+    `sudo su -c "gem install -g sass"`
 
 ### Step 2
 Run the command
-    `gem install sass`
+    `gem install -g sass`
 
 
 ## Clone the repo
