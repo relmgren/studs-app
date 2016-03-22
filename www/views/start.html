@@ -9,7 +9,14 @@
             <div class="item item-divider">Schedule</div>
             <div ng-repeat="item in collection | filter:filterInput" class="list card">
                 <div class="item">
-                    <h2>{{ item.title }}</h2>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <h2>{{ item.title }}</h2>
+                    </div>
+                    <div class="col-xs-6">
+                      <p> {{ item.date }}</p>
+                    </div>
+                  </div>
                     <p>{{ item.description }}</p>
                     <button class="button button-small button-positive" ui-sref="app.scheduledEvent({scheduledEvent: $index})">More Info</button>
                 </div>

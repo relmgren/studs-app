@@ -6,7 +6,8 @@ controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Sch
 	$scope.collection = [];
 
 	$scope.getCollection = function() {
-		$scope.collection = Schedule.all();
+
+		return $scope.collection = Schedule.all();
 	};
 
 	$scope.remoteSchedule = function() {
