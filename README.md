@@ -42,7 +42,7 @@ Run the command
 ## Clone the repo
 After cloning the repo run
     `npm install` , 
-    `bower install`
+    `bower --force install`
 
 
 # Testing
