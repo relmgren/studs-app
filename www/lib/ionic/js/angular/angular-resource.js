@@ -251,12 +251,10 @@ function shallowClearAndCopy(src, dst) {
       {userId:123, cardId:'@id'}, {
        charge: {method:'POST', params:{charge:true}}
       });
-
      // We can retrieve a collection from the server
      var cards = CreditCard.query(function() {
        // GET: /user/123/card
        // server returns: [ {id:456, number:'1234', name:'Smith'} ];
-
        var card = cards[0];
        // each item is an instance of CreditCard
        expect(card instanceof CreditCard).toEqual(true);
@@ -265,12 +263,10 @@ function shallowClearAndCopy(src, dst) {
        card.$save();
        // POST: /user/123/card/456 {id:456, number:'1234', name:'J. Smith'}
        // server returns: {id:456, number:'1234', name: 'J. Smith'};
-
        // our custom method is mapped as well.
        card.$charge({amount:9.99});
        // POST: /user/123/card/456?amount=9.99&charge=true {id:456, number:'1234', name:'J. Smith'}
      });
-
      // we can create an instance as well
      var newCard = new CreditCard({number:'0123'});
      newCard.name = "Mike Smith";
@@ -288,7 +284,6 @@ function shallowClearAndCopy(src, dst) {
  * When the data is returned from the server then the object is an instance of the resource type and
  * all of the non-GET methods are available with `$` prefix. This allows you to easily support CRUD
  * operations (create, read, update, delete) on server-side data.
-
    ```js
      var User = $resource('/user/:userId', {userId:'@id'});
      User.get({userId:123}, function(user) {
@@ -321,7 +316,6 @@ function shallowClearAndCopy(src, dst) {
            $scope.user = user;
          });
    ```
-
  * # Creating a custom 'PUT' request
  * In this example we create a custom method on our resource to make a PUT request
  * ```js

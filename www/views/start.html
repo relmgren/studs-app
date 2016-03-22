@@ -16,7 +16,6 @@
                 <div class="item">
                     <h2>{{ item.title }}</h2>
                     <p>{{ item.description }}</p>
-                    <sub>{{ item.date | date:'HH:mm-d-MMM' }}</sub>
                     <button class="button button-small button-positive" ui-sref="app.scheduledEvent({scheduledEvent: $index})">More Info</button>
                 </div>
             </div>
