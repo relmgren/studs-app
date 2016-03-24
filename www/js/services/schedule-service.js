@@ -23,6 +23,12 @@ services.factory('Schedule', function($resource) {
         all: function() {
             return schedule;
         },
+        old: function() {
+            return schedule;
+        },
+        coming: function() {
+            return schedule;
+        },
         add: function(item) {
             schedule.unshift(item);
             // Save locally!

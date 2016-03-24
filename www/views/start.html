@@ -7,8 +7,8 @@
     <ion-content>
         <div class="list">
             <div class="item item-divider">Schedule</div>
-            <div ng-repeat="item in collection | orderBy:'date'" class="list card">
-                <div class="item">
+            <div ng-repeat="item in collection | orderBy:'date'" class="list card" >
+                <div class="item" id="{{item._id.$oid}}">
                   <div class="row">
                     <div class="col-xs-6">
                       <h2>{{ item.title }}</h2>
