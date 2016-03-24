@@ -11,13 +11,7 @@ services.factory('Schedule', function($resource) {
         schedule = JSON.parse(localStorage.getItem("schedule"));
         if(schedule === null) {
             // If nothing is yet set (first time use), use "default values"
-            schedule = [{
-                title: "Fallback-material",
-                description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-                date: new Date('June 22, 2016 01:30:00'),
-                place: "Landos partytält",
-                coordinates: {lat: -34.397, lng: 150.644}
-            }];
+            schedule = [];
         }
     }
 

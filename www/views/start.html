@@ -14,7 +14,7 @@
                       <h2>{{ item.title }}</h2>
                     </div>
                     <div class="col-xs-6">
-                      <p> {{ item.date }}</p>
+                      <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
                     </div>
                   </div>
                     <p>{{ item.description }}</p>
