@@ -1,7 +1,7 @@
 /*
 *	Sample controller
 */
-controllers.controller('sampleCtrl', ['$scope', 'Schedule', function($scope, Schedule) {
+controllers.controller('scheduleCtrl', ['$scope', 'Schedule', function($scope, Schedule) {
 	$scope.variable = "Variable!";
 	$scope.collection = [];
 
