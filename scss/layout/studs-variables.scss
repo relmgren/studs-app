@@ -1,0 +1,17 @@
+$studs-green:                           #7ac89c !default;
+$studs-white:                            #f0f3f8 !default;
+
+$button-studs-bg:              $studs-green !default;
+$button-studs-text:            $studs-white !default;
+$button-studs-border:          darken($studs-green, 10%) !default;
+$button-studs-active-bg:       darken($studs-green, 10%) !default;
+$button-studs-active-border:   darken($studs-green, 10%) !default;
+
+.button{
+
+  &.button-studs {
+    @include button-style($button-studs-bg, $button-studs-border, $button-studs-active-bg, $button-studs-active-border, $button-studs-text);
+    @include button-clear($button-studs-bg);
+    @include button-outline($button-studs-bg);
+  }
+}
