@@ -13,7 +13,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     views: {
       'appContent' :{
         templateUrl: 'views/start.html',
-        controller : "sampleCtrl"
+        controller : "scheduleCtrl"
       }
     }
   })
