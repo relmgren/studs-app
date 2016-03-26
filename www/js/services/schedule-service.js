@@ -91,7 +91,7 @@ services.factory('Schedule', function($resource) {
             return schedule[index];
         },
         previous: function() {
-
+          
             console.log(previousEvents);
             return previousEvents;
         },
