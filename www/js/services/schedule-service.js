@@ -19,19 +19,35 @@ services.factory('Schedule', function($resource) {
         apiKey : api_key
     });
 
-    var results = scheduleFactory.query({}, function() {
+    var successCallback = function() {
         schedule = results;
+        sortCollectionByDate();
         localStorage.removeItem("schedule");
         localStorage.setItem("schedule", JSON.stringify(schedule));
-    }, function(err){
+    };
+
+    var results = scheduleFactory.query({}, successCallback, function(err){
+        console.log(err);
+
         $ionicPopup.confirm({
             title: "No connection (or server problem)",
             content: "You are using a cached version of the schedule."
         });
     });
 
+    var sortCollectionByDate = function(){
+		schedule.sort(function compare(a,b) {
+  		if (a.date < b.date)
+     		return -1;
+  		if (a.date > b.date)
+    		return 1;
+  		return 0;
+		});
+	}
+
     return {
         all: function() {
+            successCallback();
             return schedule;
         },
         add: function(item) {

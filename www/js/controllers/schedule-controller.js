@@ -9,9 +9,6 @@ controllers.controller('scheduleCtrl', ['$scope', 'Schedule', '$anchorScroll', '
 		return $scope.collection = Schedule.all();
 	};
 
-
-
-
 	//Får ligga kvar sålänge, kanske tas bort
 	 $scope.scrollToCurrent = function() {
 
@@ -22,19 +19,6 @@ controllers.controller('scheduleCtrl', ['$scope', 'Schedule', '$anchorScroll', '
 		 // call $anchorScroll()
 		 $anchorScroll();
 	 };
-
-
-
-	$scope.sortCollectionByDate = function(){
-		$scope.collection.sort(function compare(a,b) {
-  		if (a.date < b.date)
-     		return -1;
-  		if (a.date > b.date)
-    		return 1;
-  		return 0;
-		});
-	}
-
 
 	$scope.init = function() {
 		// Run initial code here!
