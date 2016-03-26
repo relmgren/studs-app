@@ -5,7 +5,10 @@
         </button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="list">
+
+            <div class="list">
+
+
             <div class="item item-divider">Schedule</div>
             <div ng-repeat="item in collection | orderBy:'date' track by $index" class="list card" >
                 <div class="item" id="{{item._id.$oid}}">
@@ -17,6 +20,9 @@
                     <button class="button button-small button-studs" ui-sref="app.scheduledEvent({scheduledEvent: $index})">More Info</button>
                 </div>
             </div>
+
+
         </div>
+        
     </ion-content>
 </ion-view>

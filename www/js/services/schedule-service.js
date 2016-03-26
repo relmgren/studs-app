@@ -5,6 +5,9 @@
 services.factory('Schedule', function($resource) {
     var schedule = [];
     var api_key = "ZZKN2zrVZD7CJSRt9VLYit8XW4wqLP4E";
+    var comingEvents = [];
+    var previousEvents = [];
+
     // Try LocalStorage
     if(typeof(Storage) !== "undefined") {
         // Woho! It worked. We must only store strings. Solution, stringify the js-objects when settings them!
@@ -19,9 +22,38 @@ services.factory('Schedule', function($resource) {
         apiKey : api_key
     });
 
+
+
+
+
+    var divideEvents = function() {
+      comingEvents = [];
+      previousEvents = [];
+      var date = new Date(Date.now());
+      var month = date.getUTCMonth();
+      var day = date.getUTCDate();
+      for(i = 0; i < schedule.length; i++){
+        var date2 = new Date(schedule[i].date);
+
+        if(date2.getUTCMonth() < month){
+          previousEvents.push(schedule[i]);
+          continue;
+        }
+        if(date2.getUTCDate() < day && date2.getUTCMonth() == month){
+          previousEvents.push(schedule[i]);
+          continue;
+
+        }
+          comingEvents.push([i]);
+
+      }
+
+    };
+
     var successCallback = function() {
         schedule = results;
         sortCollectionByDate();
+        divideEvents();
         localStorage.removeItem("schedule");
         localStorage.setItem("schedule", JSON.stringify(schedule));
     };
@@ -57,6 +89,14 @@ services.factory('Schedule', function($resource) {
         },
         index: function(index) {
             return schedule[index];
+        },
+        previous: function() {
+
+            console.log(previousEvents);
+            return previousEvents;
+        },
+        coming: function() {
+            return comingEvents;
         },
         remove: function(item) {
             var index = schedule.indexOf(item);
