@@ -1,12 +1,18 @@
-<ion-view title="Start">
+<ion-view>
     <!-- Add a header button -->
     <ion-nav-buttons side="primary">
-        <button class="button button-icon icon ion-earth" ui-sref="app.challenges">
+        <button class="button button-icon icon ion-trophy" ui-sref="app.challenges">
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon icon ion-information-circled" ui-sref="app.information">
         </button>
     </ion-nav-buttons>
     <ion-content>
-      <div class="item item-divider">Schedule</div>
-      <button class="button button-small button-studs"ng-click="toggle()">{{ buttonText }}</button>
+      <div id="schedule-header" class="item item-divider">
+        Schedule 
+        <button class="button button-small button-studs" ng-click="toggle()">{{ buttonText }}</button>
+      </div>
         <div class="list" ng-show="showing">
           <div ng-repeat="item in previousEvents | orderBy:'date' track by $index" class="list card" >
             <div class="item" id="{{item._id.$oid}}">

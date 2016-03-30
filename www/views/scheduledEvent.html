@@ -1,13 +1,11 @@
 <ion-view title="ScheduledEvent">
     <ion-content>
-        <div class="padding">
+        <div id="map" data-tap-disabled="true"></div>
+        <div class="padding scheduled-event">
             <h1>{{ happening.title }}</h1>
-            <p>Showing how appSettings (value provider) looks like</p>
+            <p>{{ happening.date | date: 'EEE d MMM,  y H:mm' }}, {{ happening.place }}</p>
             <pre>{{ happening.description }}</pre>
         </div>
 
-        <div id="map" data-tap-disabled="true">
-            
-        </div>
     </ion-content>
 </ion-view>

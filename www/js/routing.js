@@ -39,6 +39,15 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         controller : "challengeCtrl"
       }
     }
+  })
+  .state('app.information', {
+    url: 'information',
+    views: {
+      'appContent' :{
+        templateUrl: 'views/information.html',
+        controller : ""
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/');
