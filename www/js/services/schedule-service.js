@@ -44,11 +44,22 @@ services.factory('Schedule', function($resource) {
           continue;
 
         }
-          comingEvents.push([i]);
+          comingEvents.push(schedule[i]);
 
       }
+      return [previousEvents, comingEvents];
 
     };
+    var sortCollectionByDate = function(){
+      schedule.sort(function compare(a,b) {
+        if (a.date < b.date)
+          return -1;
+        if (a.date > b.date)
+          return 1;
+        return 0;
+      });
+    }
+
 
     var successCallback = function() {
         schedule = results;
@@ -67,19 +78,11 @@ services.factory('Schedule', function($resource) {
         });
     });
 
-    var sortCollectionByDate = function(){
-		schedule.sort(function compare(a,b) {
-  		if (a.date < b.date)
-     		return -1;
-  		if (a.date > b.date)
-    		return 1;
-  		return 0;
-		});
-	}
+
 
     return {
         all: function() {
-            successCallback();
+          
             return schedule;
         },
         add: function(item) {
@@ -91,12 +94,13 @@ services.factory('Schedule', function($resource) {
             return schedule[index];
         },
         previous: function() {
-          
-            console.log(previousEvents);
-            return previousEvents;
+            var list = divideEvents();
+            return  list[0];
         },
         coming: function() {
-            return comingEvents;
+          var list = divideEvents();
+
+            return list[1];
         },
         remove: function(item) {
             var index = schedule.indexOf(item);
