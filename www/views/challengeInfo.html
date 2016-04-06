@@ -1,0 +1,15 @@
+<ion-view title="ChallengesInfo">
+    <ion-content>
+            <div class="row" id="start-header">
+              <h2 id="title">{{ specificChallenge.title }}</h2>
+              <!-- Temporary placeholder image. :) -->
+              <img id="image" ng-src="specificChallenge.img" alt="Alt Text" />
+                <p id="body">
+                    {{ specificChallenge.description }}
+                </p>
+                <button class="button button-small button-studs" ui-sref="app.challenge_upload({challenge_upload: $index})"> UPLOAD </button>                
+              </div>
+            
+    </ion-content>
+</ion-view>
+

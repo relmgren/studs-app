@@ -9,8 +9,8 @@ controllers.controller('challengeCtrl', ['$scope', 'Challenge',  function($scope
 	$scope.comingEvents = Challenge.coming();
 	$scope.groups = [$scope.previousEvents, $scope.comingEvents];
 	$scope.showing = false;
-	$scope.showPrevious = "Show previous events";
-	$scope.hidePrevious = "Hide previous events";
+	$scope.showPrevious = "Show previous challenges";
+	$scope.hidePrevious = "Hide previous challenges";
 	$scope.buttonText = $scope.showPrevious;
 
 

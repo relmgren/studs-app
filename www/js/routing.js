@@ -40,14 +40,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     }
   })
-  .state('app.challenge_info', {
-    url: '/challenges/:challenge_info',
+  .state('app.challengeInfo', {
+    url: '/challenges/:challengeInfo',
     views: {
       'appContent' :{
-        templateUrl: 'views/challenge_info.html',
-        controller : "challenge_infoCtrl"
+        templateUrl: 'views/challengeInfo.html',
+        controller : "challengeInfoCtrl"
       }
-    }
+    },
+        resolve: {
+            specificChallenge: function($stateParams, Challenge) {
+              return Challenge.index($stateParams.challengeInfo)
+            }
+        }
   })
   .state('app.information', {
     url: 'information',
