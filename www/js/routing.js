@@ -54,6 +54,20 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             }
         }
   })
+  .state('app.challengeUpload', {
+    url: '/challenges/:challengeUpload',
+    views: {
+      'appContent' :{
+        templateUrl: 'views/challengeUpload.html',
+        controller : "challengeUploadCtrl"
+      }
+    },
+        resolve: {
+            specificChallenge: function($stateParams, Challenge) {
+              return Challenge.index($stateParams.challengeUpload)
+            }
+        }
+  })
   .state('app.information', {
     url: 'information',
     views: {

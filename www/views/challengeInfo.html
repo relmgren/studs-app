@@ -2,13 +2,14 @@
     <ion-content>
             <div class="row" id="start-header">
               <h2>{{ specificChallenge.title }}</h2>
+            </div>
               <!-- Temporary placeholder image. :) -->
               <img id="image" src="{{specificChallenge.img}}"/>
                 <p id="body">
                     {{ specificChallenge.description }}
                 </p>
-                <button class="button button-small button-studs" ui-sref="app.challenge_upload({challenge_upload: $index})"> UPLOAD </button>                
-              </div>
+                <button class="button button-small button-studs" ui-sref="app.challengeUpload({challengeUpload: $index})"> UPLOAD </button>                
+              
             
     </ion-content>
 </ion-view>
