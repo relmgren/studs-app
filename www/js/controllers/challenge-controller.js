@@ -5,9 +5,9 @@ controllers.controller('challengeCtrl', ['$scope', 'Challenge',  function($scope
 	$scope.status = "Here we are going to list some challenges for you to do in the States"
 
 	$scope.collection = Challenge.all();
-	$scope.previousEvents = Challenge.previous();
-	$scope.comingEvents = Challenge.coming();
-	$scope.groups = [$scope.previousEvents, $scope.comingEvents];
+	$scope.previousChallenges = Challenge.previous();
+	$scope.comingChallenges = Challenge.coming();
+	$scope.groups = [$scope.previousChallenges, $scope.comingChallenges];
 	$scope.showing = false;
 	$scope.showPrevious = "Show previous challenges";
 	$scope.hidePrevious = "Hide previous challenges";
