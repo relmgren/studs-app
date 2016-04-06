@@ -1,9 +1,9 @@
 <ion-view title="ChallengesInfo">
     <ion-content>
             <div class="row" id="start-header">
-              <h2 id="title">{{ specificChallenge.title }}</h2>
+              <h2>{{ specificChallenge.title }}</h2>
               <!-- Temporary placeholder image. :) -->
-              <img id="image" ng-src="specificChallenge.img" alt="Alt Text" />
+              <img id="image" src="{{specificChallenge.img}}"/>
                 <p id="body">
                     {{ specificChallenge.description }}
                 </p>
