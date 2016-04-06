@@ -1,13 +1,12 @@
 <ion-view title="Challenges_info">
     <ion-content>
-     	<pre>{{  }}</pre>
         <div class="list card" >
             <div class="row" id="start-header">
-              <h2 id="title">Description of challenge #1</h2>
+              <h2 id="title">{{ challenge.title }}</h2>
               <!-- Temporary placeholder image. :) -->
               <img id="image" src="url" alt="Alt Text" />
                 <p id="body">
-                    Lorem Ipsum etc.
+                    {{ challenge.description }}
                 </p>
                 <button class="button button-small button-studs" ui-sref="app.challenge_info({challenge_info: $index})"> UPLOAD </button>                
               </div>

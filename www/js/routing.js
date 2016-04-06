@@ -32,7 +32,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
         }
     })
   .state('app.challenges', {
-    url: 'challenges',
+    url: '/challenges',
     views: {
       'appContent' :{
         templateUrl: 'views/challenges.html',
