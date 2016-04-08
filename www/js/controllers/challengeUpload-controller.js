@@ -3,10 +3,10 @@
 */
 controllers.controller('challengeUploadCtrl', function($scope, $state, specificChallenge) {
 	$scope.specificChallenge = specificChallenge;
-	console.log(specificChallenge.img);
+	console.log(specificChallenge);
 	$scope.status = "Upload challenge"
 
-	$scope.init = function() { 
+	$scope.init = function() {
 		// Run initial code here!
 	};
 });

@@ -1,16 +1,24 @@
 <ion-view title="ChallengesInfo">
-    <ion-content>
-            <div class="row" id="start-header">
-              <h2>{{ specificChallenge.title }}</h2>
-            </div>
-              <!-- Temporary placeholder image. :) -->
-              <img id="image" src="{{specificChallenge.img}}"/>
-                <p id="body">
-                    {{ specificChallenge.description }}
-                </p>
-                <button class="button button-small button-studs" ui-sref="app.challengeUpload({challengeUpload: $index})"> UPLOAD </button>                
-              
-            
-    </ion-content>
+  <ion-content>
+    <div class="row" id="start-header">
+      <h2>{{ specificChallenge.title }}</h2>
+    </div>
+    <img id="image" src="{{specificChallenge.img}}"/>
+    <p id="body">
+        {{ specificChallenge.description }}
+    </p>
+    <button class="button button-small button-studs" ui-sref="app.challengeUpload({challengeUpload: specificChallenge.id})"> UPLOAD </button>
+    <div id="imgUploader">
+      <form class="challengeSubmission" action="submitInfo()">
+        <label>Description:</label>
+        <input type="text" id="challengeDescription">
+        <div class="container">
+          <div class="col-xs-3" ng-repeat="stud in studsList">
+            <label>{{ stud }}</label>
+            <input type="checkbox" id="{{stud}}" value="false">
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
 </ion-view>
-
