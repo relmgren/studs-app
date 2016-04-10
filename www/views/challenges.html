@@ -1,5 +1,5 @@
 <ion-view title="Challenges">
-   
+
      	 <ion-content>
       <div id="challenge-header" class="item item-divider">
        Challenge
@@ -8,7 +8,7 @@
         <div class="list" ng-show="showing">
           <div ng-repeat="item in previousChallenges | orderBy:'date' track by $index" class="list card" >
             <div class="item" id="{{item._id.$oid}}">
-              <div class="row" id="start-header">
+              <div id="start-header">
                 <h2>{{ item.title }}</h2>
                 <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
               </div>
@@ -22,7 +22,7 @@
 
         <div ng-repeat="item in comingChallenges | orderBy:'date' track by $index" class="list card" >
           <div class="item" id="{{item._id.$oid}}">
-            <div class="row" id="start-header">
+            <div id="start-header">
               <h2>{{ item.title }}</h2>
               <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
             </div>
@@ -33,6 +33,5 @@
       </div>
 
     </ion-content>
-            
-</ion-view>
 
+</ion-view>

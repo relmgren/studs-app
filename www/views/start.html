@@ -10,13 +10,13 @@
     </ion-nav-buttons>
     <ion-content>
       <div id="schedule-header" class="item item-divider">
-        Schedule 
+        Schedule
         <button class="button button-small button-studs" ng-click="toggle()">{{ buttonText }}</button>
       </div>
         <div class="list" ng-show="showing">
           <div ng-repeat="item in previousEvents | orderBy:'date' track by $index" class="list card" >
             <div class="item" id="{{item._id.$oid}}">
-              <div class="row" id="start-header">
+              <div id="start-header">
                 <h2>{{ item.title }}</h2>
                 <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
               </div>
@@ -30,7 +30,7 @@
 
         <div ng-repeat="item in comingEvents | orderBy:'date' track by $index" class="list card" >
           <div class="item" id="{{item._id.$oid}}">
-            <div class="row" id="start-header">
+            <div id="start-header">
               <h2>{{ item.title }}</h2>
               <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
             </div>

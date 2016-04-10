@@ -1,6 +1,6 @@
 <ion-view title="ChallengesInfo">
   <ion-content>
-    <div class="row" id="start-header">
+    <div id="start-header">
       <h2>{{ specificChallenge.title }}</h2>
     </div>
     <img id="image" src="{{specificChallenge.img}}"/>
@@ -15,7 +15,7 @@
         <div class="container">
           <div class="col-xs-3" ng-repeat="stud in studsList">
             <label>{{ stud }}</label>
-            <input type="checkbox" id="{{stud}}" value="false">
+            <input type="checkbox" id="{{ stud }}" value="false">
           </div>
         </div>
       </form>
