@@ -2,8 +2,8 @@
 *	Second controller (should be in separate file)
 */
 controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge) {
-	$scope.studsList = ["Anna baklänges", "Arro", "Atlanta-Brian", "Axl", "Bae-Q", "BJ-eagle", "D ä najs", "Dina", "Elin", "Emelie", "Gla'", "J-High", "Jocke", "Johan", "Katja",
-	 "Kent", "Lando", "Masko", "Moppepojken", "Nisse", "Powerpuff Piuhola", "Ra's Al Ghul", "ReeRee", "Sebbe", "Sommar", "Sundbyberg", "Wilczek", "Will.i.am"];
+	$scope.studsList = ["anna", "aroshine", "brian", "axel", "eric", "bjorn", "denise", "dina", "elin", "emelie", "happy", "jenny", "jocke", "johan", "katja",
+	 "marcus", "emilio", "david", "victor", "nisse", "petriina", "rasmus", "rebecca", "sebastian", "fredrik", "per", "alexander", "william"];
 	$scope.specificChallenge = specificChallenge;
 	console.log(specificChallenge.img);
 	$scope.status = "Here we are going to list some challenges for you to do in the States"
@@ -11,4 +11,13 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.init = function() {
 		// Run initial code here!
 	};
+
+	$scope.imgClick = function(id){
+		console.log(id);
+		if(!document.getElementById(id).checked){
+			document.getElementById(""+id+"-img").style.border = "0";
+		} else {
+			document.getElementById(""+id+"-img").style.border = "2px solid #7ac89c";
+		}
+	}
 });

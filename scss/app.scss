@@ -27,5 +27,5 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // I prefer a folder for views, a layout.scss and
 // a common.scss where common stuff lies.
 
-@import "scss/view/_view.sass";
 @import "scss/layout/studs-variables.scss";
+@import "scss/view/_view.sass";
