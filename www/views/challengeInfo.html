@@ -7,8 +7,8 @@
     <p id="body">
         {{ specificChallenge.description }}
     </p>
-    <button class="button button-small button-studs" ui-sref="app.challengeUpload({challengeUpload: specificChallenge.id})"> UPLOAD </button>
-    <div id="imgUploader">
+    <button class="button button-small button-studs" ng-click="newUpload()"> UPLOAD </button>
+    <div id="imgUploader" hidden>
       <form class="challengeSubmission" action="submitInfo()">
         <label>Description:</label>
         <input type="text" id="challengeDescription">

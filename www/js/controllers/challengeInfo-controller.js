@@ -20,4 +20,8 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			document.getElementById(""+id+"-img").style.border = "2px solid #7ac89c";
 		}
 	}
+
+	$scope.newUpload = function(){
+		document.getElementById('imgUploader').style.display = "block";
+	}
 });
