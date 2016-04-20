@@ -56,6 +56,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			//success callback
 			function (imageURI) {
 				$scope.mypicture = imageURI;
+				$scope.uploadView();
 			},
 			//error callback
 			function (err) {
@@ -70,7 +71,9 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		} else {
 			$scope.getPicture(pictureSource);
 		}
+	}
 
+	$scope.uploadView = function() {
 		document.getElementById('challenge-div').style.display = "none";
 		document.getElementById('imgUploader').style.display = "block";
 	}
