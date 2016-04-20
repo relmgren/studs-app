@@ -13,10 +13,10 @@
         <label>Description:</label>
         <input type="text" id="challengeDescription">
         <div class="container">
-          <div ng-repeat="stud in studsList">
+          <div ng-repeat="stud in studsList | orderBy">
             <div class="col-xs-3 studsBox">
             <input ng-click="imgClick( stud )" type="checkbox" id="{{ stud }}" hidden>
-            <label for="{{ stud }}"><img id="{{ stud }}-img" ng-src="../img/{{stud}}.jpg">
+            <label for="{{ stud }}"><img id="{{ stud }}-img" ng-src="img/{{stud}}.jpg">
             </img></label>
             </div>
             <div class="row" ng-if="$index % 4 == 3"></div>
