@@ -9,6 +9,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.status = "Here we are going to list some challenges for you to do in the States";
 
 	var pictureSource;
+	var cameraSource;
 	var destinationType;
 	var url;
 
@@ -18,7 +19,8 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			//error
 			return;
 		}
-		pictureSource = navigator.camera.PictureSourceType.CAMERA;
+		pictureSource = navigator.camera.PictureSourceType.PHOTOLIBRARY;
+		cameraSource = navigator.camera.PictureSourceType.CAMERA;
 		destinationType = navigator.camera.DestinationType.FILE_URI;
 	});
 
@@ -39,11 +41,11 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		}
 	}
 
-	$scope.takePicture = function() {
+	$scope.getPicture = function(source) {
 		var options = {
 			quality: 50,
 			destinationType: destinationType,
-			sourceType: pictureSource
+			sourceType: source
 		};
 		if (!navigator.camera) {
 			//error
@@ -62,9 +64,21 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			options);
 	};
 
-	$scope.newUpload = function(){
-		$scope.takePicture();
+	$scope.newUpload = function(buttonid){
+		if(buttonid === 'camera'){
+			$scope.getPicture(cameraSource);
+		} else {
+			$scope.getPicture(pictureSource);
+		}
 
+		document.getElementById('challenge-div').style.display = "none";
 		document.getElementById('imgUploader').style.display = "block";
+	}
+
+	$scope.submitUpload = function(){
+		//POST to imgur
+
+		document.getElementById('imgUploader').style.display = "none";
+		document.getElementById('challenge-div').style.display = "block";
 	}
 });
