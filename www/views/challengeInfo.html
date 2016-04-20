@@ -10,8 +10,8 @@
     <button class="button button-small button-studs" ng-click="newUpload()"> UPLOAD </button>
     <div id="imgUploader" hidden>
       <form class="challengeSubmission" action="submitInfo()">
-        <label>Description:</label>
-        <input type="text" id="challengeDescription">
+        <label for="description">Description:</label>
+        <input type="text" id="challengeDescription"> 
         <div class="container">
           <div ng-repeat="stud in studsList | orderBy">
             <div class="col-xs-3 studsBox">
