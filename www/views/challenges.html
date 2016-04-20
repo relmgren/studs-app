@@ -7,28 +7,30 @@
       </div>
         <div class="list" ng-show="showing">
           <div ng-repeat="item in previousChallenges | orderBy:'date' track by $index" class="list card" >
-            <div class="item" id="{{item._id.$oid}}">
-              <div id="start-header">
-                <h2>{{ item.title }}</h2>
-                <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+            <a ui-sref="app.challengeInfo({challengeInfo: $index})">
+              <div class="item old-item" id="{{item._id.$oid}}">
+                <div id="start-header">
+                  <h2>{{ item.title }}</h2>
+                  <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+                </div>
+                  <p>{{ item.description }}</p>
               </div>
-                <p>{{ item.description }}</p>
-                <button class="button button-small button-studs" ui-sref="app.challengeInfo({challengeInfo: $index})">More Info</button>
-            </div>
+            </a>
           </div>
       </div>
 
       <div class="list">
 
         <div ng-repeat="item in comingChallenges | orderBy:'date' track by $index" class="list card" >
-          <div class="item" id="{{item._id.$oid}}">
-            <div id="start-header">
-              <h2>{{ item.title }}</h2>
-              <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+          <a ui-sref="app.challengeInfo({challengeInfo: $index + previousChallenges.length})">
+            <div class="item" id="{{item._id.$oid}}">
+              <div id="start-header">
+                <h2>{{ item.title }}</h2>
+                <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+              </div>
+                <p>{{ item.description }}</p>
             </div>
-              <p>{{ item.description }}</p>
-              <button class="button button-small button-studs" ui-sref="app.challengeInfo({challengeInfo: $index + previousChallenges.length})">More Info</button>
-          </div>
+          </a>
         </div>
       </div>
 

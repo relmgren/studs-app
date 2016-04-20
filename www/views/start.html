@@ -15,28 +15,30 @@
       </div>
         <div class="list" ng-show="showing">
           <div ng-repeat="item in previousEvents | orderBy:'date' track by $index" class="list card" >
-            <div class="item" id="{{item._id.$oid}}">
-              <div id="start-header">
-                <h2>{{ item.title }}</h2>
-                <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+            <a ui-sref="app.scheduledEvent({scheduledEvent: $index})">
+              <div class="item old-item" id="{{item._id.$oid}}">
+                <div id="start-header">
+                  <h2>{{ item.title }}</h2>
+                  <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+                </div>
+                  <p>{{ item.description }}</p>
               </div>
-                <p>{{ item.description }}</p>
-                <button class="button button-small button-studs" ui-sref="app.scheduledEvent({scheduledEvent: $index})">More Info</button>
-            </div>
+            </a>
           </div>
       </div>
 
       <div class="list">
 
         <div ng-repeat="item in comingEvents | orderBy:'date' track by $index" class="list card" >
-          <div class="item" id="{{item._id.$oid}}">
-            <div id="start-header">
-              <h2>{{ item.title }}</h2>
-              <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+          <a ui-sref="app.scheduledEvent({scheduledEvent: $index + previousEvents.length})">
+            <div class="item" id="{{item._id.$oid}}">
+              <div id="start-header">
+                <h2>{{ item.title }}</h2>
+                <p> {{ item.date | date: 'EEE d MMM,  y H:mm' }} </p>
+              </div>
+                <p>{{ item.description }}</p>
             </div>
-              <p>{{ item.description }}</p>
-              <button class="button button-small button-studs" ui-sref="app.scheduledEvent({scheduledEvent: $index + previousEvents.length})">More Info</button>
-          </div>
+          </a>
         </div>
       </div>
 
