@@ -1,17 +1,22 @@
 /*
 *	Second controller (should be in separate file)
 */
-controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge) {
+controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge, $http) {
 	$scope.studsList = ["anna", "aroshine", "brian", "axel", "eric", "bjorn", "denise", "dina", "elin", "emelie", "happy", "jenny", "jocke", "johan", "katja",
 	 "marcus", "emilio", "david", "victor", "nisse", "petriina", "rasmus", "rebecca", "sebastian", "fredrik", "per", "alexander", "william"];
 	$scope.specificChallenge = specificChallenge;
 	console.log(specificChallenge.img);
 	$scope.status = "Here we are going to list some challenges for you to do in the States";
 
+
 	var pictureSource;
 	var cameraSource;
 	var destinationType;
-	var url;
+	var POSTurl = "https://api.imgur.com/3/upload";
+	var apiKey = "861253e98acaf9740ff893b008bdeb4fc7478639";
+	$scope.mypicture;
+
+	//var GETurl = "https://api.imgur.com/3/image/{id}"
 
 	// on deviceready check if camera is in use.
 	ionic.Platform.ready(function() {
@@ -56,6 +61,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			//success callback
 			function (imageURI) {
 				$scope.mypicture = imageURI;
+				$scope.postToImgur($scope.mypicture);
 				$scope.uploadView();
 			},
 			//error callback
@@ -64,6 +70,32 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			},
 			options);
 	};
+
+	$scope.postToImgur = function(pic){
+		$http({
+			method: 'POST',
+			headers: {
+				'Authorization': 'Client-ID 6b7c2f43e409af6'
+			},
+			url: POSTurl,
+			data: {
+				'image': pic
+			},
+		}).then(function successCallback(response) {
+			console.log(response);
+				// this callback will be called asynchronously
+				// when the response is available
+			}, function errorCallback(response) {
+				console.log(response);
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			});
+	}
+
+
+	// File name only
+
+
 
 	$scope.newUpload = function(buttonid){
 		if(buttonid === 'camera'){

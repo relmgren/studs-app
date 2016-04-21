@@ -5,8 +5,9 @@
 services.factory('Challenge', function($resource) {
     var challenge = [];
     var api_key = "ZZKN2zrVZD7CJSRt9VLYit8XW4wqLP4E";
-    var comingEvents = [];
-    var previousEvents = [];
+    var comingChallenges = [];
+    var previousChallenges = [];
+    var submits = [];
 
     // Try LocalStorage
     if(typeof(Storage) !== "undefined") {
@@ -22,13 +23,17 @@ services.factory('Challenge', function($resource) {
         apiKey : api_key
     });
 
+    var submissions = $resource("https://api.mlab.com/api/1/databases/studs-app/collections/submission/:id", {
+        apiKey : api_key
+    });
+
 
 
 
 
     var divideEvents = function() {
-      comingEvents = [];
-      previousEvents = [];
+      comingChallenges = [];
+      previousChallenges = [];
       var date = new Date(Date.now());
       var month = date.getUTCMonth();
       var day = date.getUTCDate();
@@ -36,18 +41,18 @@ services.factory('Challenge', function($resource) {
         var date2 = new Date(challenge[i].date);
 
         if(date2.getUTCMonth() < month){
-          previousEvents.push(challenge[i]);
+          previousChallenges.push(challenge[i]);
           continue;
         }
         if(date2.getUTCDate() < day && date2.getUTCMonth() == month){
-          previousEvents.push(challenge[i]);
+          previousChallenges.push(challenge[i]);
           continue;
 
         }
-          comingEvents.push(challenge[i]);
+          comingChallenges.push(challenge[i]);
 
       }
-      return [previousEvents, comingEvents];
+      return [previousChallenges, comingChallenges];
 
     };
     var sortCollectionByDate = function(){
@@ -62,12 +67,20 @@ services.factory('Challenge', function($resource) {
 
 
     var successCallback = function() {
-       challenge = results;
+        challenge = results;
         sortCollectionByDate();
         divideEvents();
         localStorage.removeItem("challenge");
         localStorage.setItem("challenge", JSON.stringify(challenge));
     };
+
+
+    //TODO
+    var submissionCallback = function(){
+        submits = submitResults;
+
+
+    }
 
     var results = challengeFactory.query({}, successCallback, function(err){
         console.log(err);
@@ -78,11 +91,21 @@ services.factory('Challenge', function($resource) {
         });
     });
 
+    var submitResults = submissions.query({}, submissionCallback, function(err){
+        console.log(err);
+
+        $ionicPopup.confirm({
+            title: "No connection (or server problem)",
+            content: "You are using a cached version of the challenge."
+        });
+    });
+
+
 
 
     return {
         all: function() {
-          
+
             return challenge;
         },
         add: function(item) {
