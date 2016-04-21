@@ -67,7 +67,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			function (imageData) {
 
 				$scope.mypicture = imageData;
-				$scope.postToImgur($scope.mypicture);
 				$scope.uploadView();
 			},
 			//error callback
@@ -95,6 +94,8 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			$scope.imgurresponse = response.data;
 				// this callback will be called asynchronously
 				// when the response is available
+
+			
 			}, function errorCallback(response) {
 				console.log("ERROR");
 				console.log(JSON.stringify(response.data));
@@ -125,6 +126,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 
 	$scope.submitUpload = function(){
 		//POST to imgur
+		$scope.postToImgur($scope.mypicture);
 
 		document.getElementById('imgUploader').style.display = "none";
 		document.getElementById('challenge-div').style.display = "block";
