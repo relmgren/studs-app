@@ -7,12 +7,17 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.specificChallenge = specificChallenge;
 	console.log(specificChallenge.img);
 	$scope.status = "Here we are going to list some challenges for you to do in the States";
+	$scope.imgurreponse;
+
+			// Imgur api values
+	    // "id": "AKFry",
+	    // "deletehash": "CagcTEHEVyQhk9n"
 
 
 	var pictureSource;
 	var cameraSource;
 	var destinationType;
-	var POSTurl = "https://api.imgur.com/3/upload";
+	var POSTurl = "https://api.imgur.com/3/image";
 	var apiKey = "861253e98acaf9740ff893b008bdeb4fc7478639";
 	$scope.mypicture;
 
@@ -26,7 +31,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		}
 		pictureSource = navigator.camera.PictureSourceType.PHOTOLIBRARY;
 		cameraSource = navigator.camera.PictureSourceType.CAMERA;
-		destinationType = navigator.camera.DestinationType.FILE_URI;
+		destinationType = navigator.camera.DestinationType.DATA_URL;
 	});
 
 	$scope.selectedParticipants = [];
@@ -59,8 +64,9 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		}
 		navigator.camera.getPicture(
 			//success callback
-			function (imageURI) {
-				$scope.mypicture = imageURI;
+			function (imageData) {
+
+				$scope.mypicture = imageData;
 				$scope.postToImgur($scope.mypicture);
 				$scope.uploadView();
 			},
@@ -74,19 +80,26 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.postToImgur = function(pic){
 		$http({
 			method: 'POST',
-			headers: {
-				'Authorization': 'Client-ID 6b7c2f43e409af6'
-			},
 			url: POSTurl,
+			headers: {
+				Authorization: 'Client-ID 6b7c2f43e409af6'
+			},
 			data: {
-				'image': pic
+				'image': pic,
+				'album': 'CagcTEHEVyQhk9n',
+				'type': 'base64'
 			},
 		}).then(function successCallback(response) {
-			console.log(response);
+			console.log("NU KOMMER DET GREJJER");
+			console.log(JSON.stringify(response.data));
+			$scope.imgurresponse = response.data;
 				// this callback will be called asynchronously
 				// when the response is available
 			}, function errorCallback(response) {
-				console.log(response);
+				console.log("ERROR");
+				console.log(JSON.stringify(response.data));
+				$scope.imgurresponse = response.data;
+
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 			});

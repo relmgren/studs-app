@@ -41,8 +41,11 @@ Run the command
 
 ## Clone the repo
 After cloning the repo run
-    `npm install` , 
+    `npm install` ,
     `bower --force install`
+    'cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-camera.git'
+    'cordova plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-file-transfer.git'
+    'ionic plugin add https://github.com/apache/cordova-plugin-whitelist.git'
 
 
 # Testing
