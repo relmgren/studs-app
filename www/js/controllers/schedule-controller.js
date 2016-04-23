@@ -11,17 +11,12 @@ controllers.controller('scheduleCtrl', ['$scope', 'Schedule', '$anchorScroll', '
 	$scope.hidePrevious = "Hide previous events";
 	$scope.buttonText = $scope.showPrevious;
 
-
 	$scope.toggle = function(){
 		$scope.showing = !$scope.showing;
 		if($scope.showing){
 				$scope.buttonText = $scope.hidePrevious;
 		} else {
 			$scope.buttonText = $scope.showPrevious;
-
 		}
 	}
-
-
-
 }]);

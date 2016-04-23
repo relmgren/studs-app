@@ -30,7 +30,6 @@ services.factory('Challenge', function($resource) {
       var day = date.getUTCDate();
       for(i = 0; i < challenge.length; i++){
         var date2 = new Date(challenge[i].date);
-
         if(date2.getUTCMonth() < month){
           previousChallenges.push(challenge[i]);
           continue;
@@ -38,10 +37,8 @@ services.factory('Challenge', function($resource) {
         if(date2.getUTCDate() < day && date2.getUTCMonth() == month){
           previousChallenges.push(challenge[i]);
           continue;
-
         }
           comingChallenges.push(challenge[i]);
-
       }
       return [previousChallenges, comingChallenges];
 
@@ -56,7 +53,6 @@ services.factory('Challenge', function($resource) {
       });
     }
 
-
     var successCallback = function() {
         challenge = results;
         sortCollectionByDate();
@@ -65,21 +61,16 @@ services.factory('Challenge', function($resource) {
         localStorage.setItem("challenge", JSON.stringify(challenge));
     };
 
-
     var results = challengeFactory.query({}, successCallback, function(err){
         console.log(err);
-
         $ionicPopup.confirm({
             title: "No connection (or server problem)",
             content: "You are using a cached version of the challenge."
         });
     });
 
-
-
     return {
         all: function() {
-
             return challenge;
         },
         add: function(item) {
@@ -96,7 +87,6 @@ services.factory('Challenge', function($resource) {
         },
         coming: function() {
           var list = divideEvents();
-
             return list[1];
         },
         remove: function(item) {

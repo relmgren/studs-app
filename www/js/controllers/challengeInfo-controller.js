@@ -16,16 +16,13 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	var Submit = Submit.resource;
 	$scope.challengeContributions = Submit.getChallengeSubmission(specificChallenge._id.$oid);
 
-
 	var pictureSource;
 	var cameraSource;
 	var destinationType;
 	var POSTurl = "https://api.imgur.com/3/image";
 	var apiKey = "861253e98acaf9740ff893b008bdeb4fc7478639";
 	$scope.mypicture;
-
 	//var GETurl = "https://api.imgur.com/3/image/{id}"
-
 	// on deviceready check if camera is in use.
 	ionic.Platform.ready(function() {
 		if(!navigator.camera) {
@@ -47,7 +44,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		if(!document.getElementById(id).checked){
 			document.getElementById(""+id+"-img").style.border = "0";
 			$scope.selectedParticipants.splice($scope.selectedParticipants.indexOf(id) ,1);
-
 		} else {
 			document.getElementById(""+id+"-img").style.border = "2px solid #7ac89c";
 			$scope.selectedParticipants.push(id);
@@ -143,6 +139,4 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			template: 'Error: ' + JSON.stringify(error)
 		});
 	}
-
-
 });

@@ -22,10 +22,6 @@ services.factory('Schedule', function($resource) {
         apiKey : api_key
     });
 
-
-
-
-
     var divideEvents = function() {
       comingEvents = [];
       previousEvents = [];
@@ -42,13 +38,10 @@ services.factory('Schedule', function($resource) {
         if(date2.getUTCDate() < day && date2.getUTCMonth() == month){
           previousEvents.push(schedule[i]);
           continue;
-
         }
           comingEvents.push(schedule[i]);
-
       }
       return [previousEvents, comingEvents];
-
     };
     var sortCollectionByDate = function(){
       schedule.sort(function compare(a,b) {
@@ -59,7 +52,6 @@ services.factory('Schedule', function($resource) {
         return 0;
       });
     }
-
 
     var successCallback = function() {
         schedule = results;
@@ -78,11 +70,9 @@ services.factory('Schedule', function($resource) {
         });
     });
 
-
-
     return {
         all: function() {
-          
+
             return schedule;
         },
         add: function(item) {

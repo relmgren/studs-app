@@ -13,15 +13,12 @@ controllers.controller('challengeCtrl', ['$scope', 'Challenge',  function($scope
 	$scope.hidePrevious = "Hide previous challenges";
 	$scope.buttonText = $scope.showPrevious;
 
-
 	$scope.toggle = function(){
 		$scope.showing = !$scope.showing;
 		if($scope.showing){
 				$scope.buttonText = $scope.hidePrevious;
 		} else {
 			$scope.buttonText = $scope.showPrevious;
-
 		}
 	}
-
 }]);

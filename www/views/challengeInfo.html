@@ -14,7 +14,7 @@
         <h3>Submissions</h3>
         <div ng-repeat="post in challengeContributions" class="subPost" >
           <img ng-src="{{ post.link }}">
-          <sub>{{ post.description }}</sub>
+          <p>{{ post.description }}</p>
           <span ng-repeat="stud in post.participants"> {{ stud }} </span>
         </div>
       </div>
@@ -33,7 +33,6 @@
           </div>
           <button class="button button-small button-studs" ng-click="submitUpload()"> Submit </button>
           <p id="androidConsole"> {{ imgurresponse }} </p>
-
         </form>
       </div>
   </ion-content>

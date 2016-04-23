@@ -26,7 +26,6 @@ services.factory('Submit', function($resource) {
   }
 
   var results = submissions.query({}, successCallback, function(err){
-      console.log(err);
   });
 
   this.addSubmission = function(link, challengeID, description, participants) {
@@ -36,10 +35,8 @@ services.factory('Submit', function($resource) {
       'description': description,
       'participants': participants
     }), function(result) {
-        console.log('Success!');
         console.log(result);
     }, function (err){
-        console.log('Error');
         console.log(err);
     });
   }
