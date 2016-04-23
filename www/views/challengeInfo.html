@@ -12,7 +12,7 @@
       <button class="button button-small button-studs" ng-click="newUpload('camera')"> Take Picture </button>
     </div>
     <div id="imgUploader" hidden>
-      <form class="challengeSubmission" action="submitInfo()">
+      <form class="challengeSubmission">
         <label>Description:</label>
         <input type="text" id="challengeDescription">
         <div class="container">
@@ -24,7 +24,7 @@
             </div>
           </div>
           <button class="button button-small button-studs" ng-click="submitUpload()"> Submit </button>
-          <p> {{ imgurresponse }} </p>
+          <p id="androidConsole"> {{ imgurresponse }} </p>
 
         </form>
       </div>

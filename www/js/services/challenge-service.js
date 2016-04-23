@@ -7,7 +7,6 @@ services.factory('Challenge', function($resource) {
     var api_key = "ZZKN2zrVZD7CJSRt9VLYit8XW4wqLP4E";
     var comingChallenges = [];
     var previousChallenges = [];
-    var submits = [];
 
     // Try LocalStorage
     if(typeof(Storage) !== "undefined") {
@@ -17,18 +16,9 @@ services.factory('Challenge', function($resource) {
             // If nothing is yet set (first time use), use "default values"
             challenge = [];
         }
-        // Same for submissions
-        submits = JSON.parse(localStorage.getItem("submits"));
-        if(submits === null){
-          submits = [];
-        }
     }
 
     var challengeFactory = this.Challenge = $resource("https://api.mlab.com/api/1/databases/studs-app/collections/challenge/:id", {
-        apiKey : api_key
-    });
-
-    var submissions = $resource("https://api.mlab.com/api/1/databases/studs-app/collections/submission/:id", {
         apiKey : api_key
     });
 
@@ -76,13 +66,6 @@ services.factory('Challenge', function($resource) {
     };
 
 
-    //TODO
-    var submissionCallback = function(){
-        submits = submitResults;
-        localStorage.removeItem("submits");
-        localStorage.setItem("submits", JSON.stringify(submits));
-    }
-
     var results = challengeFactory.query({}, successCallback, function(err){
         console.log(err);
 
@@ -91,16 +74,6 @@ services.factory('Challenge', function($resource) {
             content: "You are using a cached version of the challenge."
         });
     });
-
-    var submitResults = submissions.query({}, submissionCallback, function(err){
-        console.log(err);
-
-        $ionicPopup.confirm({
-            title: "No connection (or server problem)",
-            content: "You are using a cached version of the challenge."
-        });
-    });
-
 
 
 

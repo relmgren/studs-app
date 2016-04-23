@@ -34,16 +34,18 @@ services.factory('Submit', function($resource) {
   });
 
   this.addSubmission = function(link, challengeID, description, participants) {
-    submissions.save({
+    submissions.save(JSON.stringify({
       'link': link,
       'challengeID': challengeID,
       'description': description,
       'participants': participants
-    }, function(result) {
+    }), function(result) {
         console.log('Success!');
+        document.getElementById("androidConsole").html("Success");
         console.log(result);
     }, function (err){
         console.log('Error');
+        document.getElementById("androidConsole").html("Fucking Error");
         console.log(err);
     });
   }
