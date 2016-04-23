@@ -15,7 +15,9 @@
         <div ng-repeat="post in challengeContributions" class="subPost" >
           <img ng-src="{{ post.link }}">
           <p>{{ post.description }}</p>
-          <span ng-repeat="stud in post.participants"> {{ stud }} </span>
+          <p>
+            Contributors: <span ng-repeat="stud in post.participants"> {{ stud }} </span>
+          </p>
         </div>
       </div>
     </div>
