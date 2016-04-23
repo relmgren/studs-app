@@ -14,6 +14,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	    // "deletehash": "CagcTEHEVyQhk9n"
 
 	var Submit = Submit.resource;
+	$scope.challengeContributions = Submit.getChallengeSubmission(specificChallenge._id.$oid);
 
 
 	var pictureSource;
@@ -92,7 +93,7 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		}).then(function successCallback(response) {
 			console.log("NU KOMMER DET GREJJER");
 			console.log(JSON.stringify(response.data.data.link));
-			Submit.addSubmission(response.data.data.link,	$scope.specificChallenge._id, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
+			Submit.addSubmission(response.data.data.link,	$scope.specificChallenge._id.$oid, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
 			$scope.confirmSubmit();
 				// this callback will be called asynchronously
 				// when the response is available

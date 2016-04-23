@@ -10,6 +10,16 @@
       </p>
       <button class="button button-small button-studs" ng-click="newUpload('gallery')"> Upload </button>
       <button class="button button-small button-studs" ng-click="newUpload('camera')"> Take Picture </button>
+      <div id="challengesGallery">
+        <p> lol haha </p>
+
+        <div ng-repeat="post in challengeContributions" class="subPost" >
+                <p> lol haha </p>
+                <img ng-src="{{ post.link }}">
+                <p>{{ post.description }}</p>
+                <p> {{ post.participants }} </p>
+        </div>
+      </div>
     </div>
     <div id="imgUploader" hidden>
       <form class="challengeSubmission">
