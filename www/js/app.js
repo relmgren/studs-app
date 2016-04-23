@@ -25,8 +25,12 @@ var app = angular.module('app', ['ionic','ionic.service.core', 'ngCordova', 'app
             });
         }
     }
+
   });
-});
+})
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0);
+})
 var controllers = angular.module('app.controllers', []);
 var services = angular.module('app.services', ['ngResource']);
 var directives = angular.module('app.directives', []);

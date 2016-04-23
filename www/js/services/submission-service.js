@@ -28,6 +28,11 @@ services.factory('Submit', function($resource) {
   var results = submissions.query({}, successCallback, function(err){
   });
 
+  var refreshSubmissions = function() {
+    results = submissions.query({}, successCallback, function(err){
+    });
+  }
+
   this.addSubmission = function(link, challengeID, description, participants) {
     submissions.save(JSON.stringify({
       'link': link,
@@ -36,6 +41,7 @@ services.factory('Submit', function($resource) {
       'participants': participants
     }), function(result) {
         console.log(result);
+        refreshSubmissions();
     }, function (err){
         console.log(err);
     });
@@ -43,11 +49,14 @@ services.factory('Submit', function($resource) {
 
   this.getChallengeSubmission = function(cID){
     searchResults = [];
+    refreshSubmissions();
     for (var i = 0; i < submits.length; i++) {
       if (submits[i].challengeID == cID) {
         searchResults.push( submits[i] );
       }
     }
+    console.log(searchResults);
+
     return searchResults;
   }
 

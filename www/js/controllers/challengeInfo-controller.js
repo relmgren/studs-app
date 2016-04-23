@@ -5,7 +5,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.studsList = ["anna", "aroshine", "brian", "axel", "eric", "bjorn", "denise", "dina", "elin", "emelie", "happy", "jenny", "jocke", "johan", "katja",
 	 "marcus", "emilio", "david", "victor", "nisse", "petriina", "rasmus", "rebecca", "sebastian", "fredrik", "per", "alexander", "william"];
 	$scope.specificChallenge = specificChallenge;
-	console.log(specificChallenge.img);
 	$scope.status = "Here we are going to list some challenges for you to do in the States";
 	$scope.imgurreponse;
 
@@ -87,7 +86,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 				'type': 'base64'
 			},
 		}).then(function successCallback(response) {
-			console.log("NU KOMMER DET GREJJER");
 			console.log(JSON.stringify(response.data.data.link));
 			Submit.addSubmission(response.data.data.link,	$scope.specificChallenge._id.$oid, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
 			$scope.confirmSubmit();
