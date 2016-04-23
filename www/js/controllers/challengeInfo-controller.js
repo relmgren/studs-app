@@ -1,7 +1,7 @@
 /*
 *	Second controller (should be in separate file)
 */
-controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge, $http) {
+controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge, Submit, $http) {
 	$scope.studsList = ["anna", "aroshine", "brian", "axel", "eric", "bjorn", "denise", "dina", "elin", "emelie", "happy", "jenny", "jocke", "johan", "katja",
 	 "marcus", "emilio", "david", "victor", "nisse", "petriina", "rasmus", "rebecca", "sebastian", "fredrik", "per", "alexander", "william"];
 	$scope.specificChallenge = specificChallenge;
@@ -12,6 +12,8 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			// Imgur api values
 	    // "id": "AKFry",
 	    // "deletehash": "CagcTEHEVyQhk9n"
+
+	var Submit = Submit.resource;
 
 
 	var pictureSource;
@@ -65,7 +67,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		navigator.camera.getPicture(
 			//success callback
 			function (imageData) {
-
 				$scope.mypicture = imageData;
 				$scope.uploadView();
 			},
@@ -91,11 +92,9 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		}).then(function successCallback(response) {
 			console.log("NU KOMMER DET GREJJER");
 			console.log(JSON.stringify(response.data));
-			$scope.imgurresponse = response.data;
+			$scope.imgurresponse = response.data.link;
 				// this callback will be called asynchronously
 				// when the response is available
-
-			
 			}, function errorCallback(response) {
 				console.log("ERROR");
 				console.log(JSON.stringify(response.data));
@@ -105,11 +104,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 				// or server returns response with an error status.
 			});
 	}
-
-
-	// File name only
-
-
 
 	$scope.newUpload = function(buttonid){
 		if(buttonid === 'camera'){
@@ -127,6 +121,8 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 	$scope.submitUpload = function(){
 		//POST to imgur
 		$scope.postToImgur($scope.mypicture);
+
+		Submit.addSubmission($scope.imgurresponse,	$scope.specificChallenge.id, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
 
 		document.getElementById('imgUploader').style.display = "none";
 		document.getElementById('challenge-div').style.display = "block";
