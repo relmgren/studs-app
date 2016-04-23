@@ -41,11 +41,9 @@ services.factory('Submit', function($resource) {
       'participants': participants
     }), function(result) {
         console.log('Success!');
-        document.getElementById("androidConsole").html("Success");
         console.log(result);
     }, function (err){
         console.log('Error');
-        document.getElementById("androidConsole").html("Fucking Error");
         console.log(err);
     });
   }

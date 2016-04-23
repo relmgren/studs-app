@@ -1,7 +1,7 @@
 /*
 *	Second controller (should be in separate file)
 */
-controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge, Submit, $http) {
+controllers.controller('challengeInfoCtrl', function($scope, $state, specificChallenge, Submit, $http, $ionicPopup) {
 	$scope.studsList = ["anna", "aroshine", "brian", "axel", "eric", "bjorn", "denise", "dina", "elin", "emelie", "happy", "jenny", "jocke", "johan", "katja",
 	 "marcus", "emilio", "david", "victor", "nisse", "petriina", "rasmus", "rebecca", "sebastian", "fredrik", "per", "alexander", "william"];
 	$scope.specificChallenge = specificChallenge;
@@ -91,15 +91,16 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			},
 		}).then(function successCallback(response) {
 			console.log("NU KOMMER DET GREJJER");
-			console.log(JSON.stringify(response.data));
-			$scope.imgurresponse = response.data.link;
+			console.log(JSON.stringify(response.data.data.link));
+			Submit.addSubmission(response.data.data.link,	$scope.specificChallenge._id, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
+			$scope.confirmSubmit();
 				// this callback will be called asynchronously
 				// when the response is available
 			}, function errorCallback(response) {
 				console.log("ERROR");
 				console.log(JSON.stringify(response.data));
 				$scope.imgurresponse = response.data;
-
+				$scope.errorSubmit(response.data);
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 			});
@@ -122,9 +123,25 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 		//POST to imgur
 		$scope.postToImgur($scope.mypicture);
 
-		Submit.addSubmission($scope.imgurresponse,	$scope.specificChallenge.id, document.getElementById('challengeDescription').value,	$scope.selectedParticipants);
-
 		document.getElementById('imgUploader').style.display = "none";
 		document.getElementById('challenge-div').style.display = "block";
 	}
+
+	$scope.confirmSubmit = function(){
+		var popup = $ionicPopup.alert({
+			title: 'Your image has been submitted!',
+			okType: 'button button-small button-studs',
+			template: 'Ligga?'
+		});
+	}
+
+	$scope.errorSubmit = function(error){
+		var popup = $ionicPopup.alert({
+			title: 'Something went wrong! Atlanta-Brian',
+			okType: 'button button-small button-studs',
+			template: 'Error: ' + JSON.stringify(error)
+		});
+	}
+
+
 });
