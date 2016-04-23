@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'app' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('app', ['ionic', 'ngCordova', 'app.config', 'app.controllers', 'app.services', 'app.directives'])
+var app = angular.module('app', ['ionic','ionic.service.core', 'ngCordova', 'app.config', 'app.controllers', 'app.services', 'app.directives'])
 .run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {

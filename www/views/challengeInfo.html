@@ -6,18 +6,16 @@
       </div>
       <img id="image" src="{{specificChallenge.img}}"/>
       <p id="body">
-          {{ specificChallenge.description }}
+        {{ specificChallenge.description }}
       </p>
       <button class="button button-small button-studs" ng-click="newUpload('gallery')"> Upload </button>
       <button class="button button-small button-studs" ng-click="newUpload('camera')"> Take Picture </button>
       <div id="challengesGallery">
-        <p> lol haha </p>
-
+        <h3>Submissions</h3>
         <div ng-repeat="post in challengeContributions" class="subPost" >
-                <p> lol haha </p>
-                <img ng-src="{{ post.link }}">
-                <p>{{ post.description }}</p>
-                <p> {{ post.participants }} </p>
+          <img ng-src="{{ post.link }}">
+          <sub>{{ post.description }}</sub>
+          <span ng-repeat="stud in post.participants"> {{ stud }} </span>
         </div>
       </div>
     </div>

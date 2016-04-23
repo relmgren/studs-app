@@ -5,6 +5,7 @@ services.factory('Submit', function($resource) {
   var api_key = "ZZKN2zrVZD7CJSRt9VLYit8XW4wqLP4E";
   var submits = [];
 
+
   // Try LocalStorage
   if(typeof(Storage) !== "undefined") {
       // Woho! It worked. We must only store strings. Solution, stringify the js-objects when settings them!
@@ -14,7 +15,7 @@ services.factory('Submit', function($resource) {
       }
   }
 
-  var submissions = $resource("https://api.mlab.com/api/1/databases/studs-app/collections/submission/",{
+  var submissions = $resource("https://api.mlab.com/api/1/databases/studs-app/collections/submission/:id",{
       apiKey : api_key,
   });
 
@@ -26,8 +27,6 @@ services.factory('Submit', function($resource) {
 
   var results = submissions.query({}, successCallback, function(err){
       console.log(err);
-
-
   });
 
   this.addSubmission = function(link, challengeID, description, participants) {
@@ -46,13 +45,13 @@ services.factory('Submit', function($resource) {
   }
 
   this.getChallengeSubmission = function(cID){
-    submissions.query({challengeID:cID}, function(res){
-      console.log(cID);
-      console.log(res);
-      return res;
-    }, function(err){
-        console.log(err);
-    });
+    searchResults = [];
+    for (var i = 0; i < submits.length; i++) {
+      if (submits[i].challengeID == cID) {
+        searchResults.push( submits[i] );
+      }
+    }
+    return searchResults;
   }
 
   return {
