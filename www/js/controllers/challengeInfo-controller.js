@@ -55,7 +55,6 @@ controllers.controller('challengeInfoCtrl', function($scope, $state, specificCha
 			destinationType: destinationType,
 			sourceType: source,
 			correctOrientation: true,
-			encodingType: Camera.EncodingType.JPEG
 		};
 		if (!navigator.camera) {
 			//error

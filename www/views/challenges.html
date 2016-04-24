@@ -1,5 +1,4 @@
 <ion-view>
-
      	 <ion-content>
       <div id="challenge-header" class="item item-divider">
        Challenges
@@ -18,9 +17,7 @@
             </a>
           </div>
       </div>
-
       <div class="list">
-
         <div ng-repeat="item in comingChallenges | orderBy:'date' track by $index" class="list card" >
           <a ui-sref="app.challengeInfo({challengeInfo: $index + previousChallenges.length})">
             <div class="item" id="{{item._id.$oid}}">
@@ -33,7 +30,5 @@
           </a>
         </div>
       </div>
-
     </ion-content>
-
 </ion-view>

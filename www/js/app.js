@@ -25,7 +25,6 @@ var app = angular.module('app', ['ionic','ionic.service.core', 'ngCordova', 'app
             });
         }
     }
-
   });
 })
 .config(function($ionicConfigProvider) {

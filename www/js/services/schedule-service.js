@@ -72,7 +72,6 @@ services.factory('Schedule', function($resource) {
 
     return {
         all: function() {
-
             return schedule;
         },
         add: function(item) {

@@ -2,7 +2,6 @@
 *	Routing
 */
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-
   $stateProvider.state('app', {
     url: '/',
     abstract: true,
@@ -63,7 +62,5 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       }
     }
   });
-
   $urlRouterProvider.otherwise('/');
-
 }]);
