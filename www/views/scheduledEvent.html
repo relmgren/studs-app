@@ -2,7 +2,7 @@
     <ion-content>
         <div id="map" data-tap-disabled="true"></div>
         <div class="padding scheduled-event">
-          <button class="button button-small button-studs" ng-href="geo:{{::happening.lat}}, {{::happening.lng}}?q={{::happening.lat}},{{happening.lng}}({{::happening.title}})">Open in Maps</button>
+          <a class="button button-small button-studs" ng-click="openNavigator()">Open in Maps</a>
             <h2>{{ happening.title }}</h2>
             <p>{{ happening.date | date: 'EEE d MMM,  y H:mm' }}, {{ happening.place }}</p>
             <pre>{{ happening.description }}</pre>
