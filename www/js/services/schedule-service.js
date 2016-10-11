@@ -63,11 +63,6 @@ services.factory('Schedule', function($resource) {
 
     var results = scheduleFactory.query({}, successCallback, function(err){
         console.log(err);
-
-        $ionicPopup.confirm({
-            title: "No connection (or server problem)",
-            content: "You are using a cached version of the schedule."
-        });
     });
 
     return {

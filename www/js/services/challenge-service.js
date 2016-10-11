@@ -63,10 +63,6 @@ services.factory('Challenge', function($resource) {
 
     var results = challengeFactory.query({}, successCallback, function(err){
         console.log(err);
-        $ionicPopup.confirm({
-            title: "No connection (or server problem)",
-            content: "You are using a cached version of the challenge."
-        });
     });
 
     return {
